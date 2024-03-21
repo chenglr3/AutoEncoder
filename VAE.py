@@ -51,7 +51,7 @@ class VAE(nn.Module):
         #reshape
         x = x.view(batch_size,1,28,28)
 
-        #KL divergence
+        #KL divergence,确保P(Z|X)向N(0,1)看齐，为什么呢？因为如果只让预测的X_hat和X接近的话，模型最终会让方差变成0，这样确定性强，不过这样模型就变成自编码器，所以需要限制P(Z|X)的概率分布
         kld = 0.5 * torch.sum(
             torch.pow(mu,2) +
             torch.pow(sigma,2) - 
