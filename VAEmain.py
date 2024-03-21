@@ -46,6 +46,12 @@ def main():
             loss = criterion(x_hat,x)
             
             if kld is not None:
+                '''
+                原先的loss:重构误差 VS kld 误差
+                重构过程是希望没噪声的，KL loss是希望有噪声的，二者互相对抗
+                当重构loss > KLd loss，就降低噪声，使得拟合更加容易一点
+                当重构loss < Kld loss,就增加噪声，拟合困难，这是decoder就要想办法提高生成能力
+                '''
                 elbo = - loss - 1.0 * kld
                 loss = - elbo
 
