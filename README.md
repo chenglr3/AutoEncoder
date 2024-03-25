@@ -9,9 +9,10 @@
 # 有关next(iter(some_iterable))
 在 Python 中，`next(iter(some_iterable))` 是一种常用的模式，用于获取可迭代对象（如列表、元组、集合、字典等）的第一个元素。这个表达式首先将 `some_iterable` 转换为一个迭代器，然后通过 `next()` 函数获取迭代器的下一个元素，也就是集合中的第一个元素。
 
-在您提供的代码片段 `next(iter(mnist_test))` 中，`mnist_test` 很可能是一个可迭代对象，比如 PyTorch 的 `DataLoader` 或者是其他类型的迭代器。这个表达式的目的是获取 `mnist_test` 中的第一个元素。
+对于代码中的 `next(iter(mnist_test))` 中，`mnist_test` 就是一个可迭代对象，这个表达式的目的是获取 `mnist_test` 中的第一个元素。
 
-在深度学习的上下文中，`mnist_test` 可能是一个测试数据集的 `DataLoader`，它按照批次（batch）提供数据。当你使用 `next(iter(mnist_test))` 时，你实际上是在尝试获取测试数据集中的第一个批次的数据。但是，需要注意的是，`next()` 函数不会自动处理批次的迭代，它只是简单地获取第一个元素。如果你想要遍历整个测试集，通常你会在一个循环中使用 `for` 语句，如下所示：
+在深度学习的上下文中，`mnist_test` 是一个测试数据集的 `DataLoader`，它按照批次（batch）提供数据。所以当使用 `next(iter(mnist_test))` 时，实际上是在尝试获取测试数据集中的第一个批次的数据。
+但是，需要注意的是，`next()` 函数不会自动处理批次的迭代，它只是简单地获取第一个元素。如果你想要遍历整个测试集，通常你会在一个循环中使用 `for` 语句，如下所示：
 
 ```python
 for data in mnist_test:
