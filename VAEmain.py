@@ -38,6 +38,12 @@ def main():
 
     for epoch in range(10):
         #遍历训练集的数据
+        '''
+        mnist_train作为一个DataLoader对象，其输出形式是一个可迭代的批次数据。当你在训练循环中迭代mnist_train时，每次迭代都会输出一个批次的数据，这个批次包含一对元素：输入数据和对应的标签。
+        每个批次的数据形式为：(batch_images, batch_labels)，其中：
+        batch_images 是一个形状为 [batch_size, 1, 28, 28] 的张量，表示一批图像数据。1 表示图像是单通道（灰度图），28, 28 是图像的高度和宽度。
+        batch_labels 是一个形状为 [batch_size] 的张量，表示这批图像对应的标签（数字0到9）。
+        '''
         for batch_idx ,(x,_) in enumerate(mnist_train):
             # [b,1,28,28]
             x = x.to(device)
